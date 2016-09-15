@@ -1,0 +1,85 @@
+<DOCTYPE html>
+<html>
+<HEAD>
+<meta charset="UTF-8">
+<style type="text/css">
+</style>
+<script language="JavaScript">
+<!-- Begin
+// Insert number of questions
+var numQues = 4;
+// Insert number of choices in each question
+var numChoi = 3;
+// Insert number of questions displayed in answer area
+var answers = new Array(4);
+// Insert answers to questions
+answers[0] = "mouth";
+answers[1] = "seven";
+answers[2] = "ఎలా?";
+answers[3] = "నిఘంటువు";
+// Do not change anything below here ...
+function getScore(form) {
+var score = 0;
+var currElt;
+var currSelection;
+for (i=0; i<numQues; i++) {
+currElt = i*numChoi;
+for (j=0; j<numChoi; j++) {
+currSelection = form.elements[currElt + j];
+if (currSelection.checked) {
+if (currSelection.value == answers[i]) {
+score++;
+break;
+}
+}
+}
+}
+score = Math.round(score/numQues*100);
+form.percentage.value = score + "%";
+var correctAnswers = "";
+for (i=1; i<=numQues; i++) {
+correctAnswers += i + ". " + answers[i-1] + "\r\n";
+}
+form.solutions.value = correctAnswers;
+}
+// End -->
+</script>
+</HEAD>
+<body>
+<h3>Language Quiz</h3>
+<form name="quiz" method="post" action="telugu2.html">
+1. The word (నోరు [Nōru]) means which of the following:
+<ul style="margin-top: 1pt">
+<li><input type="radio" name="q1" value="Colorful Style Symbols">ear </li>
+<li><input type="radio" name="q1" value="Cascading Style Sheets">eye</li>
+<li><input type="radio" name="q1" value="Computer Style Symbols"> mouth</li>
+</ul>
+2. The word (ఏడు [Ēḍu]) means which of the following:
+<ul style="margin-top: 1pt">
+<li><input type="radio" name="q2" value="Dramatic HTML">seven</li>
+<li><input type="radio" name="q2" value="Design HTML">six</li>
+<li><input type="radio" name="q2" value="Dynamic HTML">seventeen</li>
+</ul>
+3. How would you write (why?)
+<ul style="margin-top: 1pt">
+<li><input type="radio" name="q3" value="Microsoft"> ఎలా? </li>
+<li><input type="radio" name="q3" value="Netscape"> ఏమి? </li>
+<li><input type="radio" name="q3" value="Sun Micro Systems">ఎవరు?</li>
+</ul>
+4. Which one of the following means (dictionary)?
+<ul style="margin-top: 1pt">
+<li><input type="radio" name="q4" value="Cascading Gate Interaction"> నిఘంటువు</li>
+<li><input type="radio" name="q4" value="Common GIF Interface"> పెన్సిలు</li>
+<li><input type="radio" name="q4" value="Common Gateway Interface">పేజీ,పుట</li>
+</ul>
+<input type="button" value="check" onClick="getScore(this.form)">
+<input type="reset" value="Clear answers">
+<p> Score = <strong><input class="bgclr" type="text" size="5" name="percentage" disabled></strong><br><br>
+Correct answers:<br>
+<textarea class="bgclr" name="solutions" wrap="virtual" rows="4" cols="30" disabled>
+</textarea>
+<br><br>
+<input type="submit" value="NEXT">
+</form>
+</body>
+</html> 
